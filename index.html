@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Calculate your estimated monthly mortgage repayments and total repayment.">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="./style.css">
+  <title>Frontend Mentor | Mortgage repayment calculator</title>
+  <script src="./script.js" defer></script>
+</head>
+<body>
+  <main class="calculator" aria-label="Mortgage repayment calculator">
+    <section class="calculator__form-panel">
+      <div class="form-heading">
+        <h1>Mortgage Calculator</h1>
+        <button class="clear-button" id="clear-all" type="button">Clear All</button>
+      </div>
+
+      <form id="mortgage-form" novalidate>
+        <div class="field field--full" id="amount-field">
+          <label for="mortgage-amount">Mortgage Amount</label>
+          <div class="input-wrap input-wrap--prefix">
+            <span class="input-addon" aria-hidden="true">£</span>
+            <input id="mortgage-amount" name="amount" type="number" min="1" step="any" inputmode="decimal" autocomplete="off" aria-describedby="amount-error">
+          </div>
+          <small class="error-message" id="amount-error"></small>
+        </div>
+
+        <div class="field-grid">
+          <div class="field" id="term-field">
+            <label for="mortgage-term">Mortgage Term</label>
+            <div class="input-wrap input-wrap--suffix">
+              <input id="mortgage-term" name="term" type="number" min="1" step="1" inputmode="numeric" autocomplete="off" aria-describedby="term-error">
+              <span class="input-addon" aria-hidden="true">years</span>
+            </div>
+            <small class="error-message" id="term-error"></small>
+          </div>
+          <div class="field" id="rate-field">
+            <label for="interest-rate">Interest Rate</label>
+            <div class="input-wrap input-wrap--suffix">
+              <input id="interest-rate" name="rate" type="number" min="0" step="any" inputmode="decimal" autocomplete="off" aria-describedby="rate-error">
+              <span class="input-addon" aria-hidden="true">%</span>
+            </div>
+            <small class="error-message" id="rate-error"></small>
+          </div>
+        </div>
+
+        <fieldset class="mortgage-type" id="type-field">
+          <legend>Mortgage Type</legend>
+          <label class="radio-option" for="repayment">
+            <input id="repayment" type="radio" name="mortgage-type" value="repayment">
+            <span class="custom-radio" aria-hidden="true"></span>
+            <span>Repayment</span>
+          </label>
+          <label class="radio-option" for="interest-only">
+            <input id="interest-only" type="radio" name="mortgage-type" value="interest-only">
+            <span class="custom-radio" aria-hidden="true"></span>
+            <span>Interest Only</span>
+          </label>
+          <small class="error-message" id="type-error"></small>
+        </fieldset>
+
+        <button class="calculate-button" type="submit">
+          <img src="./assets/images/icon-calculator.svg" alt="" width="16" height="16">
+          Calculate Repayments
+        </button>
+      </form>
+    </section>
+
+    <section class="results-panel" id="results-panel" aria-live="polite" aria-atomic="true">
+      <div class="empty-results" id="empty-results">
+        <img src="./assets/images/illustration-empty.svg" alt="" class="empty-illustration">
+        <h2>Results shown here</h2>
+        <p>Complete the form and click “calculate repayments” to see what your monthly repayments would be.</p>
+      </div>
+
+      <div class="completed-results" id="completed-results" hidden>
+        <h2>Your results</h2>
+        <p class="results-intro">Your results are shown below based on the information you provided. To adjust the results, edit the form and click “calculate repayments” again.</p>
+        <div class="results-card">
+          <div class="monthly-result">
+            <p>Your monthly repayments</p>
+            <output id="monthly-repayment" for="mortgage-amount mortgage-term interest-rate">£0.00</output>
+          </div>
+          <div class="total-result">
+            <p>Total you'll repay over the term</p>
+            <output id="total-repayment" for="mortgage-amount mortgage-term interest-rate">£0.00</output>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" rel="noreferrer">Frontend Mentor</a>.
+    Coded by <a href="#">Your Name</a>.
+  </footer>
+</body>
+</html>
